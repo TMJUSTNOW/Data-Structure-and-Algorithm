@@ -23,12 +23,13 @@ def is_sub(_str, _pat):
     match_list = partial_match(_pat)
     pat_idx = 0
     for str_idx in range(len(_str)):
-        print 'start_idx:', str_idx
+        #print 'start_idx:', str_idx
         if _pat[pat_idx] == _str[str_idx]:
             if pat_idx == (len(_pat) - 1):
                 start_idx = str_idx - len(_pat) + 1
                 print 'pattern matched, start at index: %s, %s' % \
                         (start_idx, _str[start_idx:(start_idx + len(_pat))])
+                return True
                 break
             else:
                 pat_idx += 1
@@ -38,7 +39,9 @@ def is_sub(_str, _pat):
             else:
                 match_idx = match_list[pat_idx - 1]
                 pat_idx = match_idx
+    return False
 
-_str = 'bbc abcdab abcdabcdabde'
-_pat = 'abcdabd'
-is_sub(_str, _pat)
+
+if __name__ == '__main__':
+    flag = is_sub('@abcd\taaaaaaaabcde', 'abcde')
+    print flag
