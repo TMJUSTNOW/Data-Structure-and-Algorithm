@@ -21,27 +21,31 @@ def partial_match(_str):
 
 def is_sub(_str, _pat):
     match_list = partial_match(_pat)
-    pat_idx = 0
-    for str_idx in range(len(_str)):
-        #print 'start_idx:', str_idx
+    pat_idx, str_idx = 0, 0
+    while str_idx < len(_str):
         if _pat[pat_idx] == _str[str_idx]:
             if pat_idx == (len(_pat) - 1):
                 start_idx = str_idx - len(_pat) + 1
-                print 'pattern matched, start at index: %s, %s' % \
-                        (start_idx, _str[start_idx:(start_idx + len(_pat))])
+                end_idx = str_idx + 1
+                print 'pattern "%s" matched, "%s(%s)%s"' % (_pat,
+                        _str[:start_idx], _str[start_idx:end_idx], _str[end_idx:])
                 return True
                 break
             else:
+                str_idx += 1
                 pat_idx += 1
         else:
             if pat_idx == 0:
-                continue
+                str_idx += 1
             else:
-                match_idx = match_list[pat_idx - 1]
-                pat_idx = match_idx
+                pat_idx = match_list[pat_idx - 1]
+    if pat_idx != (len(_pat) - 1):
+        print 'pattern %s not found!' % _pat
+        return False
     return False
 
 
+
 if __name__ == '__main__':
-    flag = is_sub('@abcd\taaaaaaaabcde', 'abcde')
+    flag = is_sub("@abcd\taaaaaaaabcdeadfasdf","abcde")
     print flag
