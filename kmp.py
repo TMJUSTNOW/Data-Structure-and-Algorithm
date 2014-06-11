@@ -1,4 +1,6 @@
 # -*- coding:utf-8 -*-
+# implement kmp algorithm based on the theory:
+#   http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html
 
 def inter_pre_suf(_str):
     prefixs, suffixs = set(), set()
