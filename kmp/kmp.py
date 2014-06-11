@@ -29,6 +29,7 @@ def is_sub(_str, _pat):
                 end_idx = str_idx + 1
                 print 'pattern "%s" matched, "%s(%s)%s"' % (_pat,
                         _str[:start_idx], _str[start_idx:end_idx], _str[end_idx:])
+                return True
                 break
             else:
                 str_idx += 1
@@ -40,7 +41,11 @@ def is_sub(_str, _pat):
                 pat_idx = match_list[pat_idx - 1]
     if pat_idx != (len(_pat) - 1):
         print 'pattern %s not found!' % _pat
+        return False
+    return False
 
-_str = '@abcd\taaaaaaaabcdeadfasdf'
-_pat = 'abcde'
-is_sub(_str, _pat)
+
+
+if __name__ == '__main__':
+    flag = is_sub("@abcd\taaaaaaaabcdeadfasdf","abcde")
+    print flag
