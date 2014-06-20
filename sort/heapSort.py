@@ -18,7 +18,6 @@ def maxHeap(l, start_index, end_index):
         else:
             break
 
-
 def heapSort(l):
     for start in range(len(l)/2,-1,-1):
         maxHeap(l, start, len(l)-1)
@@ -29,7 +28,7 @@ def heapSort(l):
         l[0] = temp
         maxHeap(l,0,end-1)
         print l
-    
+
     return l
 
 if __name__ == '__main__':
