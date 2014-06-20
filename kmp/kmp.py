@@ -11,7 +11,8 @@ def inter_pre_suf(_str):
     if not inter:
         return 0
     else:
-        return len(inter.pop())
+        max_inter = max(inter, key=lambda val: len(val))
+        return len(max_inter)
 
 def partial_match(_str):
     match_list = []
